@@ -118,8 +118,7 @@
                 <input type="number" id="cleaningStaffFee" value="84000" step="0.01"> 元
             </div>
             <div>
-                <label for="basicPercentage">基本百分比:</label>
-                <input type="number" id="basicPercentage" value="50" step="0.01"> %
+                <label for="basicPercentage">基本百分比: 25%</label>
             </div>
             <div>
                 <label for="totalHouseholds">社區總戶數:</label>
@@ -147,7 +146,7 @@
             <h2>4) 每月管理費</h2>
             <div>
                 <label for="feePerPing">每坪收費:</label>
-                <input type="number" id="feePerPing" value="22" step="0.01"> 元
+                <input type="number" id="feePerPing" value="28" step="0.01"> 元
             </div>
             <div>
                 <label for="majorPublicElectricity">大公電費:</label>
@@ -227,7 +226,7 @@
             // 2) 基本費 (每月)
             const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
-            const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) / 100 || 0; // Convert percentage to decimal
+            const basicPercentage = 0.25
             const totalHouseholds = parseFloat(document.getElementById('totalHouseholds').value) || 0;
             let basicFee = 0;
             if (totalHouseholds > 0) {
