@@ -118,7 +118,7 @@
                 <input type="number" id="cleaningStaffFee" value="84000" step="1000"> 元
             </div>
             <div>
-                <label for="basicPercentage">基本百分比: 25%</label>
+                <label for="basicPercentage">基本百分比:            25% </label>
             </div>
             <div>
                 <label for="totalHouseholds">社區總戶數:</label>
@@ -228,10 +228,10 @@
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = 0.25
             const totalHouseholds = parseFloat(document.getElementById('totalHouseholds').value) || 0;
-            let basicFee = 0;
-            if (totalHouseholds > 0) {
-                basicFee = (securityFee + cleaningStaffFee) * basicPercentage / totalHouseholds;
-            }
+            let basicFee = 233.5; //0
+            //if (totalHouseholds > 0) {
+            //    basicFee = (securityFee + cleaningStaffFee) * basicPercentage / totalHouseholds;
+            //}            
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 車位清潔費(每月)
