@@ -135,7 +135,7 @@
         <div class="section">
             <h2>3) 每月車位清潔費</h2>
             <div>
-                <label for="monthlyParkingCleaningRate">每月清潔費 (用於車位清潔費計算):</label>
+                <label for="monthlyParkingCleaningRate">每月清潔費：</label>
                 <input type="number" id="monthlyParkingCleaningRate" value="300" step="10"> 元
             </div>
             <div>
@@ -275,8 +275,8 @@
 
             // 3) 車位清潔費(每月)
             const monthlyParkingCleaningRate = parseFloat(document.getElementById('monthlyParkingCleaningRate').value) || 0;
-            const parkingCleaningFee = (parkingPing / 10) * monthlyParkingCleaningRate;
-            document.getElementById('parkingCleaningFeeResult').innerText = parkingCleaningFee.toFixed(2);
+            const monthlyParkingCleaningFee = (parkingPing / 10) * monthlyParkingCleaningRate;
+            document.getElementById('monthlyParkingCleaningFeeResult').innerText = monthlyParkingCleaningFee.toFixed(2);
 
             // 4) 每月管理費
             const newFeePerPing = parseFloat(document.getElementById('newFeePerPing').value) || 0;
@@ -306,7 +306,7 @@
             const totalElectricityFeeResult = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
       
             // Based on the provided formula: 大小公電費 + (每坪收費*住家坪數 + 車位坪數*30 + 每月基本費*總戶數)*6 + 社區網路費用*6 + 電梯分攤費
-            const newTotalManagementFee = totalElectricityFeeResult + ((feePerPing*totalResidentialPing) + (totalParkingPing*(monthlyParkingCleaningRate/10)) + monthlyBasicFee)*6 + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
+            const newTotalManagementFee = totalElectricityFeeResult + ((feePerPing*totalResidentialPing) + (totalParkingPing /10)*monthlyParkingCleaningRate) + monthlyBasicFee)*6 + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
             document.getElementById('monthlyBasicFeeResult').innerText = monthlyBasicFee.toFixed(2);
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2);            
         }
