@@ -315,7 +315,29 @@
             // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*車位坪數)*6＋網路費用*6＋機車格清潔費*6＋電梯分攤月費*6
             const oldManagementFee = (majorPublicElectricity + minorPublicElectricity + oldFeePerPing) * residentialPing * 6 + (parkingPing * oldFeePerPing) * 6 + internetFee * 6 + motorcycleCleaningFee * 6 + elevatorFee * 6;
             document.getElementById('oldManagementFeeResult').innerText = oldManagementFee.toFixed(2);
-             
+
+            // 8) 新制社區總管理費 (每期)
+            const totalResidentialPing = 11077.55;
+            const totalParkingPing = 3825;
+            const monthlyTotalBasicFee = basicFee * totalHouseholds;
+            const monthlyTotalMotorcycleCleaningFee = parseFloat(document.getElementById('monthlyTotalMotorcycleCleaningFee').value) || 0;
+            const monthlyTotalInternetFee = parseFloat(document.getElementById('monthlyTotalInternetFee').value) || 0;
+            const monthlyTotalElevatorFee = parseFloat(document.getElementById('monthlyTotalElevatorFee').value) || 0;
+            const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
+            document.getElementById('totalResidentialPing').innerText = totalResidentialPing;
+            document.getElementById('totalParkingPing').innerText = totalParkingPing;
+            document.getElementById('monthlyTotalBasicFee').innerText = monthlyTotalBasicFee.toFixed(2);
+            document.getElementById('TotalMotorcycleCleaningFee').innerText = TotalMotorcycleCleaningFee;             
+            document.getElementById('monthlyTotalInternetFee').innerText = monthlyTotalInternetFee; 
+            document.getElementById('monthlyTotalElevatorFee').innerText = monthlyTotalElevatorFee;
+            
+            // 新制總管理費 ＝ 公用總電費＋（每坪收費*住家總坪數＋車位總坪數/10*300＋每月基本費*總戶數＋社區網路總月費＋機車格總月費＋每月電梯分攤）*6
+            const newTotalManagementFee = totalElectricityFee + ((newFeePerPing*totalResidentialPing) + (totalParkingPing /10)*monthlyParkingCleaningRate + monthlyTotalBasicFee + monthlyTotalInternetFee + monthlyTotalMotorcycleCleaningFee + monthlyTotalElevatorFee)*6;            
+            document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
+
+            // 舊制總管理費 ＝ 公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數＋社區網路總月費＋機車格總月費＋每月電梯分攤）*6
+            const oldManagementFee = totalElectricityFee + ((oldFeePerPing*totalResidentialPing) + (oldFeePerPing*totalParkingPing) + monthlyTotalInternetFee + monthlyTotalMotorcycleCleaningFee + monthlyTotalElevatorFee)*6;            
+            document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2);       
         }
 
         // Add event listeners to all input fields to recalculate on change
