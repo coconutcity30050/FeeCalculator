@@ -282,7 +282,7 @@
             const newFeePerPing = parseFloat(document.getElementById('newFeePerPing').value) || 0;
             const majorPublicElectricity = parseFloat(document.getElementById('majorPublicElectricity').value) || 0;
             const minorPublicElectricity = parseFloat(document.getElementById('minorPublicElectricity').value) || 0;
-            const monthlyManagementFee = (majorPublicElectricity + minorPublicElectricity + feePerPing) * residentialPing + parkingCleaningFee + basicFee;
+            const monthlyManagementFee = (majorPublicElectricity + minorPublicElectricity + newFeePerPing) * residentialPing + parkingCleaningFee + basicFee;
             document.getElementById('monthlyManagementFeeResult').innerText = monthlyManagementFee.toFixed(2);
 
             // 6) 新制管理費 (每期)
