@@ -305,8 +305,8 @@
             const monthlyElevatorApportionmentFee = parseFloat(document.getElementById('monthlyElevatorApportionmentFee').value) || 0;
             const totalElectricityFeeResult = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
       
-            // Based on the provided formula: 大小公電費 + 每坪收費*住家坪數*6 + 300*車位坪數*6 + 每月基本費*總戶數*6 + 社區網路費用*6 + 電梯分攤費
-            const newTotalManagementFee = totalElectricityFeeResult + ((feePerPing*totalResidentialPing) + ((totalParkingPing/10)*monthlyParkingCleaningRate) + monthlyBasicFee)*6 + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
+            // Based on the provided formula: 大小公電費 + (每坪收費*住家坪數 + 車位坪數*30 + 每月基本費*總戶數)*6 + 社區網路費用*6 + 電梯分攤費
+            const newTotalManagementFee = totalElectricityFeeResult + ((feePerPing*totalResidentialPing) + (totalParkingPing*(monthlyParkingCleaningRate/10)) + monthlyBasicFee)*6 + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
             document.getElementById('monthlyBasicFeeResult').innerText = monthlyBasicFee.toFixed(2);
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2);            
         }
