@@ -222,6 +222,10 @@
                 <h4>新制每坪收費： 28</h4>
                 <h4>住家總坪數： 11077.55 坪</h4>
                 <h4>車位總坪數： 3825 坪</h4>
+                <div>
+                <label>每月管理費： </label>
+                <span id="basicFeeResult" class="result">0</span> 元
+                </div>
                 <h4>社區網路費用： 每月 22000 元 </h4>
                 <h4>電梯分攤費用： 每期 89735 元</h4>
             </div>
@@ -288,7 +292,7 @@
             //const electricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
       
             // Based on the provided formula: 大小公電費 + 每坪收費*住家坪數*6 + 300*車位坪數*6 + 每月基本費*6 + 社區網路費用*6 + 電梯分攤費
-            const newTotalManagementFee = electricityFee + feePerPing*totalResidentialPing*6 + (totalParkingPing*monthlyParkingCleaningRate)*6 + basicFee*6 + monthlyInternetFee*6 + monthlyElevatorApportionmentFee*6;
+            const newTotalManagementFee = electricityFee + feePerPing*totalResidentialPing*6 + (totalParkingPing/10*monthlyParkingCleaningRate)*6 + basicFee*6 + monthlyInternetFee*6 + monthlyElevatorApportionmentFee*6;
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2);            
         }
 
