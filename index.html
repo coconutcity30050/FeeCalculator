@@ -219,14 +219,14 @@
         <div class="section">
             <h2>8) 社區每期總管理費 </h2>
             <div>
-                <p><label>新制每坪收費: 28</label></p>
-                <p><label for "totalResidentialPing">住家總坪數： 11077.55 坪</label><p>
-                <p><label for "totalParkingPing">車位總坪數： 3825 坪</label><p>
-                <p><label for "monthlyInternetFee">社區網路費用： 每月 22000 元 </label><p>
-                <p><label for "montylyElevatorApportionmentFee">電梯分攤費用： 每期 89735 元</label><p>
+                <h4>新制每坪收費： 28</h4>
+                <h4>住家總坪數： 11077.55 坪</h4>
+                <h4>車位總坪數： 3825 坪</h4>
+                <h4>社區網路費用： 每月 22000 元 </h4>
+                <h4>電梯分攤費用： 每期 89735 元</h4>
                 <div>
-                <label for "totalIElectricityFee">大小公費用：每期 </label>                
-                <input type="number" id="totalIElectricityFee" value="556905" step="1"> 元
+                    <label for "totalIElectricityFee">大小公費用：每期 </label>
+                    <input type="number" id="totalIElectricityFee" value="556905" step="1"> 元
                 </div>
             </div>
             <div>
@@ -288,7 +288,7 @@
       
             // Based on the provided formula: 大小公電費 + 每坪收費*住家坪數*6 + 300*車位坪數*6 + 社區網路費用*6 + 電梯分攤費
             const newTotalManagementFee = totalElectricityFee + feePerPing * totalResidentialPing * 6 + totalParkingPing * monthlyParkingCleaningRate * 6 + totalInternetFee * 6 + totalElevatorApportionmentFee *6 ;
-            document.getElementById('newTotalManagementFeeResult').innerText = totalManagementFee.toFixed(2);            
+            document.getElementById('newTotalManagementFeeResult').innerText = totalTotalManagementFee.toFixed(2);            
         }
 
         // Add event listeners to all input fields to recalculate on change
