@@ -282,7 +282,7 @@
             const internetFee = parseFloat(document.getElementById('internetFee').value) || 0;
             const motorcycleCleaningFee = parseFloat(document.getElementById('motorcycleCleaningFee').value) || 0;
 
-            // 2) 基本費 (每月)
+            // 2) 每月基本費
             const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
@@ -293,7 +293,7 @@
             }            
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
-            // 3) 車位清潔費(每月)
+            // 3) 每月車位清潔費
             const monthlyParkingCleaningRate = parseFloat(document.getElementById('monthlyParkingCleaningRate').value) || 0;
             const monthlyParkingCleaningFee = (parkingPing / 10) * monthlyParkingCleaningRate;
             document.getElementById('monthlyParkingCleaningFeeResult').innerText = monthlyParkingCleaningFee.toFixed(2);
@@ -302,7 +302,7 @@
             const newFeePerPing = parseFloat(document.getElementById('newFeePerPing').value) || 0;
             const majorPublicElectricity = parseFloat(document.getElementById('majorPublicElectricity').value) || 0;
             const minorPublicElectricity = parseFloat(document.getElementById('minorPublicElectricity').value) || 0;
-            const monthlyManagementFee = (majorPublicElectricity + minorPublicElectricity + newFeePerPing) * residentialPing + parkingCleaningFee + basicFee;
+            const monthlyManagementFee = (majorPublicElectricity + minorPublicElectricity + newFeePerPing) * residentialPing + monthlyParkingCleaningFee + basicFee;
             document.getElementById('monthlyManagementFeeResult').innerText = monthlyManagementFee.toFixed(2);
 
             // 6) 新制管理費 (每期)
