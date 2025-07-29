@@ -192,8 +192,8 @@
                 </tbody>
             </table>
             <div>
-                <label for="elevatorApportionmentFee">電梯分攤月費 :</label>
-                <input type="number" id="elevatorApportionmentFee" value="251.38" step="0.01"> 元
+                <label for="elevatorFee">電梯分攤月費 :</label>
+                <input type="number" id="elevatorFee" value="251.38" step="0.01"> 元
             </div>
         </div>
 
@@ -222,35 +222,55 @@
         <div class="section">
             <h2>8) 社區總管理費 </h2>
             <div>
-                <label for="feePerPing">每坪收費:</label>
-                <input type="number" id="feePerPing" value="28" step="1"> 元
-            </div>            
+                <label for="newFeePerPing">新制每坪:</label>
+                <span id="newFeePerPring" class="value">0</span> 元
+            </div>
             <div>
-                <h4>住家總坪數： 11077.55 坪</h4>
-                <h4>車位總坪數： 3825 坪</h4>
-                <h4>社區總戶數： 320 戶</h4>
+                <label for="oldFeePerPing">舊制每坪:</label>
+                <span id="oldFeePerPring" class="value">0</span> 元
+            </div> 
+            <div>
+                <label for="totalResidentialPing">住家總坪數:</label>
+                <span id="totalResidentialPing" class="value">0</span> 坪
+            </div> 
+            <div>
+                <label for="totalParkingPing">車位總坪數:</label>
+                <span id="totalParkingPing" class="value">0</span> 坪
+            </div>             
+            <div>
+                <label for="totalHouseholds">社區總戶數:</label>
+                <span id="totalHouseholds" class="value">0</span> 戶
             </div>
             <div>
                 <label>每月總基本費： </label>
-                <span id="monthlyBasicFeeResult" class="result">0</span> 元
+                <span id="monthlyTotalBasicFeeResult" class="result">0</span> 元
             </div>
             <div>
                 <label for="monthlyInternetFee">每月網路費用： </label>
-                <input type="number" id="monthlyInternetFee" value="22000" step="1"> 元
+                <input type="number" id="monthlyInternetFee" value="25000" step="200"> 元
             </div>
             <div>
-                <label for="monthlyElevatorApportionmentFee">每月電梯分攤： </label>
-                <input type="number" id="monthlyElevatorApportionmentFee" value="89735" step="1"> 元                
+                <label for="monthlyTotalMotorcycleCleaningFee">每月網路費用： </label>
+                <input type="number" id="monthlyTotalMotorcycleCleaningFee" value="5440" step="20"> 元
             </div>            
             <div>
-                <label for="totalElectricityFee">大小公費用：每期 </label>
+                <label for="monthlyElevatorFee">每月電梯分攤： </label>
+                <input type="number" id="monthlyElevatorFee" value="89735" step="1"> 元                
+            </div>            
+            <div>
+                <label for="totalElectricityFee">公用總電費（半年）： </label>
                 <input type="number" id="totalElectricityFee" value="556905" step="1"> 元                
             </div>
             <div>
-                <h4> 每期總管理費＝大小公電費＋每坪收費*住家總坪數*6＋車位總坪數/10*300*6＋每月總基本費*6＋每月總網路費用*6＋每月電梯分攤*6＋機車格清潔費</h4>
-                <label>每期總管理費 =</label>
+                <h4> 新制總管理費＝公用總電費＋（每坪收費*住家總坪數＋車位總坪數/10*300＋每月總基本費＋每月總網路費用＋每月電梯分攤＋每月機車格總清潔費）*6</h4>
+                <label>新制總管理費 =</label>
                 <span id="newTotalManagementFeeResult" class="result">0</span> 元
             </div>
+            <div>
+                <h4> 舊制總管理費＝公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數＋每月總網路費用＋每月電梯分攤＋每月機車格總清潔費）*6</h4>
+                <label>舊制總管理費 =</label>
+                <span id="oldTotalManagementFeeResult" class="result">0</span> 元
+            </div>            
         </div>
     </div>
 
@@ -286,29 +306,37 @@
             document.getElementById('monthlyManagementFeeResult').innerText = monthlyManagementFee.toFixed(2);
 
             // 6) 新制管理費 (每期)
-            const elevatorApportionmentFee = parseFloat(document.getElementById('elevatorApportionmentFee').value) || 0;
-            const newManagementFee = monthlyManagementFee * 6 + internetFee * 6 + motorcycleCleaningFee * 6 + elevatorApportionmentFee * 6;
+            const elevatorFee = parseFloat(document.getElementById('elevatorFee').value) || 0;
+            const newManagementFee = monthlyManagementFee * 6 + internetFee * 6 + motorcycleCleaningFee * 6 + elevatorFee * 6;
             document.getElementById('newManagementFeeResult').innerText = newManagementFee.toFixed(2);
 
             // 7) 舊制管理費 (每期)
             const oldFeePerPing = parseFloat(document.getElementById('oldFeePerPing').value) || 0;
-            // Based on the provided formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6 ＋車位坪數*車位坪數)*6 + 網路費用*6 +機車格清潔費*6+電梯分攤月費*6
-            const oldManagementFee = (majorPublicElectricity + minorPublicElectricity + oldFeePerPing) * residentialPing * 6 + (parkingPing * oldFeePerPing) * 6 + internetFee * 6 + motorcycleCleaningFee * 6 + elevatorApportionmentFee * 6;
+            // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*車位坪數)*6＋網路費用*6＋機車格清潔費*6＋電梯分攤月費*6
+            const oldManagementFee = (majorPublicElectricity + minorPublicElectricity + oldFeePerPing) * residentialPing * 6 + (parkingPing * oldFeePerPing) * 6 + internetFee * 6 + motorcycleCleaningFee * 6 + elevatorFee * 6;
             document.getElementById('oldManagementFeeResult').innerText = oldManagementFee.toFixed(2);
 
             // 8) 新制社區總管理費 (每期)
-            const feePerPing = parseFloat(document.getElementById('feePerPing').value) || 0;
             const totalResidentialPing = 11077.55;
             const totalParkingPing = 3825;
-            const monthlyBasicFee = basicFee * totalHouseholds;
-            const monthlyInternetFee = parseFloat(document.getElementById('monthlyInternetFee').value) || 0;
-            const monthlyElevatorApportionmentFee = parseFloat(document.getElementById('monthlyElevatorApportionmentFee').value) || 0;
-            const totalElectricityFeeResult = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
-      
-            // Based on the provided formula: 大小公電費 + (每坪收費*住家坪數 + 車位坪數*30 + 每月基本費*總戶數)*6 + 社區網路費用*6 + 電梯分攤費
-            const newTotalManagementFee = totalElectricityFeeResult + ((feePerPing*totalResidentialPing) + (totalParkingPing /10)*monthlyParkingCleaningRate) + monthlyBasicFee)*6 + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
-            document.getElementById('monthlyBasicFeeResult').innerText = monthlyBasicFee.toFixed(2);
-            document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2);            
+            const monthlyTotalBasicFee = basicFee * totalHouseholds;
+            const monthlyTotalMotorcycleCleaningFee = parseFloat(document.getElementById('monthlyTotalMotorcycleCleaningFee').value) || 0;
+            const monthlyTotalInternetFee = parseFloat(document.getElementById('monthlyTotalInternetFee').value) || 0;
+            const monthlyTotalElevatorFee = parseFloat(document.getElementById('monthlyTotalElevatorFee').value) || 0;
+            const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
+            document.getElementById('totalResidentialPing').innerText = totalResidentialPing.toFixed(2);
+            document.getElementById('totalParkingPing').innerText = totalParkingPing.toFixed(2);
+            document.getElementById('monthlyTotalBasicFee').innerText = monthlyTotalBasicFee.toFixed(2);
+            document.getElementById('monthlyTotalInternetFee').innerText = monthlyTotalInternetFee.toFixed(2); 
+            document.getElementById('monthlyTotalElevatorFee').innerText = monthlyTotalElevatorFee.toFixed(2);
+            
+            // 新制總管理費 ＝ 公用總電費＋（每坪收費*住家總坪數＋車位總坪數/10*300＋每月基本費*總戶數＋社區網路總月費＋機車格總月費＋每月電梯分攤）*6
+            const newTotalManagementFee = totalElectricityFee + ((newFeePerPing*totalResidentialPing) + (totalParkingPing /10)*monthlyParkingCleaningRate + monthlyTotalBasicFee + monthlyTotalInternetFee + monthlyTotalMotorcycleCleaningFee + monthlyTotalElevatorFee)*6;            
+            document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
+
+            // 舊制總管理費 ＝ 公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數＋社區網路總月費＋機車格總月費＋每月電梯分攤）*6
+            const oldManagementFee = totalElectricityFee + ((oldFeePerPing*totalResidentialPing) + (oldFeePerPing*totalParkingPing) + monthlyTotalInternetFee + monthlyTotalMotorcycleCleaningFee + monthlyTotalElevatorFee)*6;            
+            document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2);              
         }
 
         // Add event listeners to all input fields to recalculate on change
