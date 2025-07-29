@@ -223,8 +223,8 @@
                 <h4>住家總坪數： 11077.55 坪</h4>
                 <h4>車位總坪數： 3825 坪</h4>
                 <div>
-                <label>每月基本費： </label>
-                <span id="totalBasicFeeResult" class="result">0</span> 元
+                <label>每月總基本費： </label>
+                <span id="monthlyBasicFeeResult" class="result">0</span> 元
                 </div>
                 <h4>社區網路費用： 每月 22000 元 </h4>
                 <h4>電梯分攤費用： 每期 89735 元</h4>
@@ -286,14 +286,14 @@
             // 8) 新制社區總管理費 (每期)         
             const totalResidentialPing = 11077.55;
             const totalParkingPing = 3825;
-            const totalBasicFee = basicFee *6;
+            const monthlyBasicFee = basicFee * totalHouseholds;
             const monthlyInternetFee = 22000;
             const monthlyElevatorApportionmentFee = 89735;
             const totalElectricityFeeResult = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
       
-            // Based on the provided formula: 大小公電費 + 每坪收費*住家坪數*6 + 300*車位坪數*6 + 每月基本費*6 + 社區網路費用*6 + 電梯分攤費
-            const newTotalManagementFee = totalElectricityFeeResult + 28*totalResidentialPing*6 + (totalParkingPing/10*monthlyParkingCleaningRate)*6 + totalBasicFee + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
-            document.getElementById('totalBasicFeeResult').innerText = totalBasicFee.toFixed(2);
+            // Based on the provided formula: 大小公電費 + 每坪收費*住家坪數*6 + 300*車位坪數*6 + 每月基本費*320*6 + 社區網路費用*6 + 電梯分攤費
+            const newTotalManagementFee = totalElectricityFeeResult + 28*totalResidentialPing*6 + (totalParkingPing/10*monthlyParkingCleaningRate)*6 + monthlyBasicFee*6 + (monthlyInternetFee*6) + (monthlyElevatorApportionmentFee*6);
+            document.getElementById('monthlyBasicFeeResult').innerText = monthlyBasicFee.toFixed(2);
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2);            
         }
 
