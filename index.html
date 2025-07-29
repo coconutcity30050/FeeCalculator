@@ -246,7 +246,7 @@
             // 2) 基本費 (每月)
             const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
-            const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) || 0;
+            const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = parseFloat(document.getElementById('totalHouseholds').value) || 0;
             let basicFee = 0 
             if (totalHouseholds > 0) {
@@ -262,7 +262,7 @@
             // 4) 每月管理費
             const feePerPing = parseFloat(document.getElementById('feePerPing').value) || 0;
             const majorPublicElectricity = parseFloat(document.getElementById('majorPublicElectricity').value) || 0;
-            const minorPublicElectricity = parseFloat(document.getElementById('minorPublicElectricity').value) /100 || 0;
+            const minorPublicElectricity = parseFloat(document.getElementById('minorPublicElectricity').value) || 0;
             const monthlyManagementFee = (majorPublicElectricity + minorPublicElectricity + feePerPing) * residentialPing + parkingCleaningFee + basicFee;
             document.getElementById('monthlyManagementFeeResult').innerText = monthlyManagementFee.toFixed(2);
 
