@@ -341,6 +341,7 @@
             // 9) 社區每期結餘估算
             const communitySpending = parseFloat(document.getElementById('communitySpending').value) || 0;
             const communityFund = newTotalManagementFee - communitySpending;
+            // 社區每期結餘 = 社區總管理費 - 社區總支出
             document.getElementById('newTotalManagementFeeText').innerText = newTotalManagementFee.toFixed(2);
             document.getElementById('communityFundResult').innerText = communityFund.toFixed(2);
             document.getElementById('communityAnnualFundResult').innerText = (communityFund*2).toFixed(2);            
