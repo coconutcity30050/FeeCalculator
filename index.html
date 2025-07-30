@@ -317,7 +317,6 @@
             const totalBasicFee = basicFee * totalHouseholds *6;
             const totalMotorcycleCleaningFee = parseFloat(document.getElementById('totalMotorcycleCleaningFee').value) || 0;
             //const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;
-            const networkFee = 150000;
             const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0; 
             document.getElementById('newFeePerPingText').innerText = newFeePerPing;
             document.getElementById('oldFeePerPingText').innerText = oldFeePerPing;             
@@ -327,13 +326,14 @@
             document.getElementById('totalBasicFeeText').innerText = totalBasicFee;    
             
             // 新制管理費總收＝公用總電費＋（新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費 + 網路費用
+            const networkFee = 150000;
             const newFeeDiscount = 69612; // 新制28元之委員減免            
-            const newTotalManagementFee = totalElectricityFee + (newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 + totalBasicFee + totalMotorcycleCleaningFee + networkFee - newFeeDiscount;
+            const newTotalManagementFee = totalElectricityFee +(newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 +totalBasicFee +totalMotorcycleCleaningFee +networkFee -newFeeDiscount;            
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
             
             // 舊制管理費總收＝公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋機車格總清潔費 + 網路費用 - 委員減免
             const oldFeeDiscount = 86184; // 舊制45元之委員減免
-            const oldTotalManagementFee = totalElectricityFee + (oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 + totalMotorcycleCleaningFee + networkFee - oldFeeDiscount;
+            const oldTotalManagementFee = totalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleCleaningFee +networkFee -oldFeeDiscount;
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
             
         }
