@@ -295,15 +295,10 @@
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
             const basicFee = 0;
-            if (basicSecurityDiscount.checked) {
-                basicFee =0;
-            } else {
-                basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
-            }
-           
+            basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;        
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
-            // 3) 每月車位清潔費
+            // 3) 車位清潔費
             const parkingCleaningRate = parseFloat(document.getElementById('parkingCleaningRate').value) || 0;
             const parkingCleaningFee = (parkingPing / 10) * parkingCleaningRate;
             document.getElementById('parkingCleaningFeeResult').innerText = parkingCleaningFee.toFixed(2);
