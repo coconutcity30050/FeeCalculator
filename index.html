@@ -223,23 +223,23 @@
             <h2>8) 社區總管理費 </h2>
             <div>
                 <label for="newFeePerPing">新制每坪收費:</label>
-                <span id="newFeePerPing" class="value">0</span> 元
+                <span id="newFeePerPingResult" class="result">0</span> 元
             </div>
             <div>
                 <label for="oldFeePerPing">舊收每坪收費:</label>
-                <span id="oldFeePerPring" class="value">0</span> 元
+                <span id="oldFeePerPringResult" class="result">0</span> 元
             </div> 
             <div>
                 <label for="totalResidentialPing">住家總坪數:</label>
-                <span id="totalResidentialPing" class="value">0</span> 坪
+                <span id="totalResidentialPingResult" class="result">0</span> 坪
             </div> 
             <div>
                 <label for="totalParkingPing">車位總坪數:</label>
-                <span id="totalParkingPing" class="value">0</span> 坪
+                <span id="totalParkingPingResult" class="result">0</span> 坪
             </div>             
             <div>
                 <label for="totalHouseholds">社區總戶數:</label>
-                <span id="totalHouseholds" class="value">0</span> 戶
+                <span id="totalHouseholdsResult" class="result">0</span> 戶
             </div>
             <div>
                 <label>每月總基本費： </label>
@@ -247,7 +247,7 @@
             </div>
             <div>
                 <label for="monthlyTotalInternetFee">每月網路費用： </label>
-                <input type="number" id="monthlyInternetFee" value="25000" step="200"> 元
+                <input type="number" id="monthlyTotalInternetFee" value="25000" step="200"> 元
             </div>
             <div>
                 <label for="monthlyTotalMotorcycleCleaningFee">每月網路費用： </label>
@@ -258,8 +258,8 @@
                 <input type="number" id="monthlyTotalElevatorFee" value="89735" step="1"> 元                
             </div>            
             <div>
-                <label for="totalTotalElectricityFee">公用總電費（半年）： </label>
-                <input type="number" id="totalTotalElectricityFee" value="556905" step="1"> 元                
+                <label for="totalElectricityFee">公用總電費（半年）： </label>
+                <input type="number" id="totalElectricityFee" value="556905" step="1"> 元                
             </div>
             <div>
                 <h4> 新制總管理費＝公用總電費＋（每坪收費*住家總坪數＋車位總坪數/10*300＋每月總基本費＋每月總網路費用＋每月電梯分攤＋每月機車格總清潔費）*6</h4>
@@ -324,10 +324,17 @@
             const monthlyTotalInternetFee = parseFloat(document.getElementById('monthlyTotalInternetFee').value) || 0;
             const monthlyTotalElevatorFee = parseFloat(document.getElementById('monthlyTotalElevatorFee').value) || 0;
             const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0; 
-            document.getElementById('newFeePerPing').innerText = newFeePerPing;
-            document.getElementById('oldFeePerPing').innerText = oldFeePerPing;             
-            document.getElementById('totalResidentialPing').innerText = totalResidentialPing;
-            document.getElementById('totalParkingPing').innerText = totalParkingPing;       
+            document.getElementById('newFeePerPingResult').innerText = newFeePerPing;
+            document.getElementById('oldFeePerPingResult').innerText = oldFeePerPing;             
+            document.getElementById('totalResidentialPingResult').innerText = totalResidentialPing;
+            document.getElementById('totalParkingPingResult').innerText = totalParkingPing;
+            document.getElementById('totalHouseholdsResult').innerText = totalHouseholds;     
+            document.getElementById('monthlyTotalBasicFeeResult').innerText = monthlyTotalBasicFee; 
+            document.getElementById('monthlyTotalMotorcycleCleaningFeeResult').innerText = monthlyTotalMotorcycleCleaningFee;
+            document.getElementById('monthlyTotalInternetFeeResult').innerText = monthlyTotalInternetFee;   
+            document.getElementById('monthlyTotalElevatorFeeResult').innerText = monthlyTotalElevatorFee;
+            document.getElementById('totalElectricityFeeResult').innerText = totalElectricityFee;            
+
         }
 
         // Add event listeners to all input fields to recalculate on change
