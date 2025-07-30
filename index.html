@@ -255,14 +255,14 @@
                 <input type="number" id="totalElectricityFee" value="556905" step="1"> 元                
             </div>
             <div>
-                <h4>新制管理費總收＝公用總電費＋(新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋總機車格清潔費</h4>
+                <h4>新制管理費總收＝公用總電費＋(新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋總機車格清潔費＋網路費用 - 委員減免</h4>
                 <label>新制社區總管理費 =</label>
-                <span id="newTotalManagementFeeResult" class="result">0</span> 元 (
+                <span id="newTotalManagementFeeResult" class="result">0</span> 元 (新制28元之委員減免=69612)
             </div>
             <div>
-                <h4>舊制管理費總收＝公用總電費＋（舊制每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋總機車格清潔費</h4>
+                <h4>舊制管理費總收＝公用總電費＋（舊制每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋總機車格清潔費＋網路費用</h4>
                 <label>舊制社區總管理費 =</label>
-                <span id="oldTotalManagementFeeResult" class="result">0</span> 元
+                <span id="oldTotalManagementFeeResult" class="result">0</span> 元 (舊制45元之委員減免=86184)
             </div>            
         </div>
     </div>
@@ -326,11 +326,13 @@
             document.getElementById('totalBasicFeeText').innerText = totalBasicFee;    
             
             // 新制管理費總收＝公用總電費＋（新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費 + 網路費用
-            const newTotalManagementFee = totalElectricityFee + (newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 + totalBasicFee + totalMotorcycleCleaningFee + totalInternetFee;   
+            const newFeeDiscount = 69612; // 新制28元之委員減免            
+            const newTotalManagementFee = totalElectricityFee + (newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 + totalBasicFee + totalMotorcycleCleaningFee + totalInternetFee - newFeeDiscount;   
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
             
-            // 舊制管理費總收＝公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋機車格總清潔費 + 網路費用
-            const oldTotalManagementFee = totalElectricityFee + (oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 + totalMotorcycleCleaningFee + totalInternetFee;   
+            // 舊制管理費總收＝公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋機車格總清潔費 + 網路費用 - 委員減免
+            const oldFeeDiscount = 86184; // 舊制45元之委員減免
+            const oldTotalManagementFee = totalElectricityFee + (oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 + totalMotorcycleCleaningFee + totalInternetFee - oldFeeDiscount;   
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
             
         }
