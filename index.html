@@ -104,6 +104,10 @@
                 <label for="motorcycleCleaningFee">機車格清潔費:</label>
                 <input type="number" id="motorcycleCleaningFee" value="0" step="120"> 元（每期120）
             </div>
+            <div class="form-check">
+                <label for="basicSecurityDiscount">商店街保全基本費減半:</label>
+                <input type="checkbox" id="basicSecurityDiscount" value="">
+            </div>
         </div>
 
         <div class="section">
@@ -283,15 +287,20 @@
             const parkingPing = parseFloat(document.getElementById('parkingPing').value) || 0;
             const internetFee = parseFloat(document.getElementById('internetFee').value) || 0;
             const motorcycleCleaningFee = parseFloat(document.getElementById('motorcycleCleaningFee').value) || 0;
+            const basicSecurityDiscount = document.getElementsByName('basicSecurityDiscount');
 
-            // 2) 每月基本費
+            // 2) 基本費
             const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
             let basicFee = 0;
             if (totalHouseholds > 0) {
-                basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
+                if (basicSecurityDiscount.checked) {
+                    basicFee = (securityFee * 2/3 *0.5 + securityFee *1/3  + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
+                } else { 
+                    basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
+                }
             }            
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
