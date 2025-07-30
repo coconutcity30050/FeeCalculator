@@ -82,7 +82,7 @@
         <h1>新竹市椰城社區 管理費計算機</h1>
 
         <p><strong>說明：</strong>因社區管理收支統計表與社區修繕費用估算表說明管理費有調整空間，故擬定新制管理費。</p>
-        <p><strong>目的：</strong>為調降總管理費，車位按坪收費改回車位清潔費，固定支出按坪收費改為部份按戶分攤。(維持每年約有120萬元修繕預算）</p>       
+        <p><strong>目的：</strong>調降總管理費至每年約120萬元修繕預算，車位按坪收費改回車位清潔費，固定支出按坪收費改為部份按戶分攤。</p>
         <p><strong>備註：</strong>管理收支統計表與社區修繕費用估算表，請參閱 <a href="https://coconutcity30050.my.canva.site/" target="_blank">社區管理收支說明簡報！</a></p>
         <hr>
 
@@ -211,8 +211,8 @@
         </div>
 
         <div class="section">
-            <h2>8) 社區管理費總收（不含電梯分攤）</h2>            
-            <h3>公用總電費＋(每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋總機車格清潔費＋網路費用</h3>
+            <h2>8) 社區總管理費總計（不含電梯分攤）</h2>            
+            <h3>公用總電費＋(每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費＋社區網路總費用</h3>
             <div>
                 <label for="newFeePerPing">每坪收費:</label>
                 <span id="newFeePerPingText" class="result">0</span> 元<br>
@@ -226,11 +226,11 @@
                 <span id="totalBasicFeeText" class="result">0</span> 元 = (物業保全＋清潔) *25% <br>
             </div>
             <div>
-                <label for="totalMotorcycleCleaningFee">總機車格清潔費： </label>
+                <label for="totalMotorcycleCleaningFee">機車格總清潔費： </label>
                 <input type="number" id="totalMotorcycleCleaningFee" value="32760" step="20"> 元 (272 *20*6 =32640)
             </div>            
             <div>
-                <label for="totalInternetFee">社區網路費用： </label>
+                <label for="totalInternetFee">社區網路總費用： </label>
                 <input type="number" id="totalInternetFee" value="150000" step="200"> 元
             </div>          
             <div>
@@ -246,7 +246,7 @@
                 <span id="newTotalManagementFeeResult" class="result">0</span> 元 <br>            
                 <label for "oldTotalManagementFeeResult">舊制社區總管理費 =</label>
                 <span id="oldTotalManagementFeeResult" class="result">0</span> 元 <br>
-                <label for "reducedTotalManagementFeeResult>減徵總管理費 =</label>
+                <label for "reducedTotalManagementFeeResult>社區總管理費減徵 =</label>
                 <span id="reducedTotalManagementFeeResult" class="result">0</span> 元 <br>          
             </div>            
         </div>
