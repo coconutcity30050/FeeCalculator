@@ -265,6 +265,10 @@
                 <label for "communityFundResult>社區每期結餘 =</label>
                 <span id="communityFundResult" class="result">0</span> 元
             </div>
+            <div>            
+                <label for "communityAnnualFundResult>社區每年結餘 =</label>
+                <span id="communityAnnualFundResult" class="result">0</span> 元
+            </div>            
         </div>
     </div>
     <script>
@@ -339,6 +343,7 @@
             const communityFund = newTotalManagementFee - communitySpending;
             document.getElementById('newTotalManagementFeeText').innerText = newTotalManagementFee.toFixed(2);
             document.getElementById('communityFundResult').innerText = communityFund.toFixed(2);
+            document.getElementById('communityAnnualFundResult').innerText = (communityFund*2).toFixed(2);            
         }
 
         // Add event listeners to all input fields to recalculate on change
