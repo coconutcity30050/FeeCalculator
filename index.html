@@ -147,7 +147,7 @@
         <div class="section">
             <h2>4) 每月管理費</h2>
             <div>
-                <label for="newFeePerPing">每坪收費:</label>
+                <label for="newFeePerPing">新制每坪收費:</label>
                 <input type="number" id="newFeePerPing" value="28" step="1"> 元
             </div>
             <div>
@@ -222,11 +222,11 @@
         <div class="section">
             <h2>8) 社區總管理費 </h2>
             <div>
-                <label for="newFeePerPing">新制每坪:</label>
-                <span id="newFeePerPring" class="value">0</span> 元
+                <label for="newFeePerPing">新制每坪收費:</label>
+                <span id="newFeePerPing" class="value">0</span> 元
             </div>
             <div>
-                <label for="oldFeePerPing">舊制每坪:</label>
+                <label for="oldFeePerPing">舊收每坪收費:</label>
                 <span id="oldFeePerPring" class="value">0</span> 元
             </div> 
             <div>
@@ -323,7 +323,9 @@
             const monthlyTotalMotorcycleCleaningFee = parseFloat(document.getElementById('monthlyTotalMotorcycleCleaningFee').value) || 0;
             const monthlyTotalInternetFee = parseFloat(document.getElementById('monthlyTotalInternetFee').value) || 0;
             const monthlyTotalElevatorFee = parseFloat(document.getElementById('monthlyTotalElevatorFee').value) || 0;
-            const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;            
+            const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0; 
+            document.getElementById('newFeePerPing').innerText = newFeePerPing;
+            document.getElementById('oldFeePerPing').innerText = oldFeePerPing;             
             document.getElementById('totalResidentialPing').innerText = totalResidentialPing;
             document.getElementById('totalParkingPing').innerText = totalParkingPing;       
         }
