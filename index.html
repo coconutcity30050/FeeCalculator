@@ -295,13 +295,14 @@
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
             let basicFee = 0;
-            if (totalHouseholds > 0) {
-                if (basicSecurityDiscount.checked) {
-                    basicFee = 0;
-                } else { 
-                    basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
-                }
-            }            
+            if (basicSecurityDiscount.checked) {
+                const checkboxValue = basicSecurityDiscount.value;
+                console.log("Checkbox value:", checkboxValue;
+                basicFee = 0;
+            } else { 
+                basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
+            }
+           
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 每月車位清潔費
