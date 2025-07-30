@@ -101,7 +101,7 @@
                 <input type="number" id="internetFee" value="0" step="200"> 元
             </div>
             <div>
-                <label for="motorcycleCleaningFee">每月機車格清潔費:</label>
+                <label for="motorcycleCleaningFee">機車格清潔費:</label>
                 <input type="number" id="motorcycleCleaningFee" value="0" step="20"> 元
             </div>
         </div>
@@ -144,7 +144,7 @@
 
         <div class="section">
             <h2>4) 每期管理費</h2>
-            <h3>((大公電費＋小公電費＋每坪收費)*住家坪數＋每月車位清潔費＋每月基本費＋每月機車格清潔費)*6</h3>            
+            <h3>((大公電費＋小公電費＋每坪收費)*住家坪數＋每月車位清潔費＋每月基本費＋機車格清潔費)*6</h3>            
             <div>
                 <label for="newFeePerPing">新制每坪收費:</label>
                 <input type="number" id="newFeePerPing" value="32" step="1"> 元
@@ -194,7 +194,7 @@
 
         <div class="section">
             <h2>6) 新制繳費金額</h2>
-            <h3>((大公電費＋小公電費＋每坪收費)*住家坪數 + 車位清潔費 + 每月基本費 + 每月機車格清潔費)*6</h3>            
+            <h3>((大公電費＋小公電費＋每坪收費)*住家坪數 + 車位清潔費 + 機車格清潔費 + 每月基本費 )*6＋網路費用＋電梯分攤</h3>            
             <div>
                 <label>新制繳費金額 = </label>
                 <span id="newManagementFeeResult" class="result">0</span> 元
@@ -203,7 +203,7 @@
 
         <div class="section">
             <h2>7) 舊制繳費金額</h2>
-            <h3>((大公電費＋小公電費＋每坪收費)*住家坪數＋每坪收費*車位坪數＋每月機車格清潔費)*6＋網路費用＋電梯分攤</h3>            
+            <h3>((大公電費＋小公電費＋每坪收費)*住家坪數＋每坪收費*車位坪數＋機車格清潔費)*6＋網路費用＋電梯分攤</h3>            
             <div>
                 <label>舊制繳費金額 = </label>
                 <span id="oldManagementFeeResult" class="result">0</span> 元
@@ -244,11 +244,15 @@
             <div>
                 <div>
                 <label for "newTotalManagementFeeResult">新制社區總管理費 =</label>
-                <span id="newTotalManagementFeeResult" class="result">0</span> 元 <br>            
+                <span id="newTotalManagementFeeResult" class="result">0</span> 元
+                </div>
+                <div>
                 <label for "oldTotalManagementFeeResult">舊制社區總管理費 =</label>
-                <span id="oldTotalManagementFeeResult" class="result">0</span> 元 <br>
+                <span id="oldTotalManagementFeeResult" class="result">0</span> 元 
+                </div>
+                <div>
                 <label for "reducedTotalManagementFeeResult>社區總管理費減徵 =</label>
-                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元 <br>
+                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元
                 </div>
             </div>
         </div>
@@ -307,13 +311,13 @@
 
             // 6) 新制繳費金額 
             const elevatorFee = parseFloat(document.getElementById('elevatorFee').value) || 0;
-            // Formula = ((大公電費＋小公電費＋每坪收費)*住家坪數+每月車位清潔費+每月基本費+每月機車格清潔費)*6 + 網路費用 + 電梯分攤            
+            // Formula = ((大公電費＋小公電費＋每坪收費)*住家坪數+每月車位清潔費+每月基本費+機車格清潔費)*6 + 網路費用 + 電梯分攤            
             const newManagementFee = managementFee + internetFee*6 + elevatorFee*6;
             document.getElementById('newManagementFeeResult').innerText = newManagementFee.toFixed(2);
 
             // 7) 舊制繳費金額
             const oldFeePerPing = 45;
-            // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*車位坪數)*6＋機車格清潔費*6＋網路費用*6＋電梯分攤月費*6
+            // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*車位坪數)*6＋機車格清潔費*6＋網路費用＋電梯分攤
             const oldManagementFee = (majorPublicElectricity + minorPublicElectricity + oldFeePerPing)*residentialPing*6 + (parkingPing*oldFeePerPing)*6 + motorcycleCleaningFee*6 + internetFee*6  + elevatorFee*6;
             document.getElementById('oldManagementFeeResult').innerText = oldManagementFee.toFixed(2);
 
