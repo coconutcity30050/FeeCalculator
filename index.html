@@ -264,7 +264,7 @@
                 <span id="newTotalManagementFeeResult" class="result">0</span> 元
             </div>
             <div>
-                <h4> 舊制總管理費＝公用總電費＋（舊制每坪收費*住家總坪數＋每坪收費*車位總坪數＋每月總網路費用＋每月電梯分攤＋每月機車格總清潔費）*6</h4>
+                <h4> 舊制總管理費＝公用總電費＋（舊制每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋總社區網路費用＋總機車格清潔費＋每月總電梯分攤*6</h4>
                 <label>舊制總管理費 =</label>
                 <span id="oldTotalManagementFeeResult" class="result">0</span> 元
             </div>            
@@ -331,7 +331,11 @@
             // 新制總管理費＝公用總電費＋（新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋每月總基本費*6＋總社區網路費用＋機車格總清潔費＋每月電梯分攤*6
             const newTotalManagementFee = totalElectricityFee + (newFeePerPing*totalResidentialPing + (totalParkingPing /10)*monthlyParkingCleaningRate)*6 + monthlyTotalBasicFee*6 + totalInternetFee + totalMotorcycleCleaningFee + monthlyTotalElevatorFee*6;   
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
-  
+            
+            // 舊制總管理費 ＝ 公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋總社區網路費用＋機車格總清潔費＋每月電梯分攤*6
+            const oldManagementFee = totalElectricityFee + (oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 + totalInternetFee + totalMotorcycleCleaningFee + monthlyTotalElevatorFee*6;            
+            document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2);     
+            
         }
 
         // Add event listeners to all input fields to recalculate on change
