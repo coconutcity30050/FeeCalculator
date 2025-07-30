@@ -84,11 +84,10 @@
         <p><strong>說明：</strong>因社區管理收支統計表與社區修繕費用估算表說明管理費有調整空間，故擬定新制管理費。</p>
         <p><strong>目的：</strong>為調降總管理費，車位按坪收費改回車位清潔費，固定支出按坪收費改為部份按戶分攤。(維持每年約有120萬元修繕預算）</p>       
         <p><strong>備註：</strong>管理收支統計表與社區修繕費用估算表，請參閱 <a href="https://coconutcity30050.my.canva.site/" target="_blank">社區管理收支說明簡報！</a></p>
-
         <hr>
 
         <div class="section">
-            <h2>1) 住戶基本資料</h2>
+            <h3>1) 住戶基本資料</h3>
             <div>
                 <label for="residentialPing">住家坪數:</label>
                 <input type="number" id="residentialPing" value="17.84" step="0.01"> 坪
@@ -108,7 +107,7 @@
         </div>
 
         <div class="section">
-            <h2>2) 每月基本費</h2>
+            <h3>2) 每月基本費</h3>
             <div>
                 <label for="securityFee">每月物業保全費用:</label>
                 <input type="number" id="securityFee" value="215000" step="1000"> 元
@@ -122,15 +121,15 @@
                 <input type="number" id="basicPercentage" value="25" step="0.01"> %
             </div>
             <div>
-                <label>社區總戶數: 320 戶</label><br>
-                <label>每月基本費 = (每月物業費用＋每月保全費用＋每月清潔費用) *25% </label><br>
+                <p>社區總戶數: 320 戶</p><br>
+                <p>每月基本費 = (每月物業費用＋每月保全費用＋每月清潔費用) *25% </p><br>
                 <label>每月基本費 =</label>
                 <span id="basicFeeResult" class="result">0</span> 元
             </div>
         </div>
 
         <div class="section">
-            <h2>3) 每月車位清潔費</h2>
+            <h3>3) 每月車位清潔費</h3>
             <div>
                 <label for="parkingCleaningRate">車位清潔費(10坪)：</label>
                 <input type="number" id="parkingCleaningRate" value="300" step="10"> 元
@@ -142,7 +141,7 @@
         </div>
 
         <div class="section">
-            <h2>4) 每期管理費</h2>
+            <h3>4) 每期管理費</h3>
             <div>
                 <label for="newFeePerPing">新制每坪收費:</label>
                 <input type="number" id="newFeePerPing" value="32" step="1"> 元
@@ -156,14 +155,14 @@
                 <input type="number" id="minorPublicElectricity" value="2.07" step="0.01"> 元（各棟小公不同）
             </div>
             <div>
-                <label>每期管理費 = ((大公電費＋小公電費＋每坪收費)*住家坪數＋每月車位清潔費＋每月基本費＋每月機車格清潔費)*6</label>
-                <label>每期管理費 =</label>
+                <p>每期管理費 = ((大公電費＋小公電費＋每坪收費)*住家坪數＋每月車位清潔費＋每月基本費＋每月機車格清潔費)*6</p><br>
+                <label>每期管理費 = </label>
                 <span id="managementFeeResult" class="result">0</span> 元
             </div>
         </div>
 
         <div class="section">
-            <h2>5) 每棟電梯分攤月費對照表</h2>
+            <h3>5) 每棟電梯分攤月費對照表</h3>
             <table>
                 <thead>
                     <tr>
@@ -192,31 +191,33 @@
         </div>
 
         <div class="section">
-            <h2>6) 新制繳費金額</h2>
+            <h3>6) 新制繳費金額</h3>
             <div>
-                <label>((大公電費＋小公電費＋每坪收費)*住家坪數 + 車位清潔費 + 每月基本費 + 每月機車格清潔費)*6</label><br>
+                <p>((大公電費＋小公電費＋每坪收費)*住家坪數 + 車位清潔費 + 每月基本費 + 每月機車格清潔費)*6</p><br>
                 <label> = </label>
                 <span id="newManagementFeeResult" class="result">0</span> 元
             </div>
         </div>
 
         <div class="section">
-            <h2>7) 舊制繳費金額</h2>
+            <h3>7) 舊制繳費金額</h3>
             <div>
-                <label>((大公電費＋小公電費＋每坪收費)*住家坪數＋每坪收費*車位坪數＋每月機車格清潔費)*6＋網路費用＋電梯分攤</label><br>
+                <p>((大公電費＋小公電費＋每坪收費)*住家坪數＋每坪收費*車位坪數＋每月機車格清潔費)*6＋網路費用＋電梯分攤</p><br>
                 <label> = </label>
                 <span id="oldManagementFeeResult" class="result">0</span> 元
             </div>
         </div>
 
         <div class="section">
-            <h2>8) 社區管理費總收（不含電梯分攤）</h2>
-            <h4>公用總電費＋(新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋總機車格清潔費＋網路費用</h4>            
+            <h3>8) 社區管理費總收（不含電梯分攤）</h3>
+            <p>公用總電費＋(每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋總機車格清潔費＋網路費用</p><br>
             <div>
-                <label for="newFeePerPing">新制每坪收費:</label>
+                <label for="newFeePerPing">每坪收費:</label>
                 <span id="newFeePerPingText" class="result">0</span> 元<br>
-                <label>社區住家總坪數: 11077.55 坪</label><br>
-                <label>社區車位總坪數:  3825 坪</lable><br>
+            </div>
+            <div>
+                <p>社區住家總坪數: 11077.55 坪</p><br>
+                <p>社區車位總坪數: 3825 坪</p><br>
             </div>
             <div>
                 <label>總基本費： </label>
