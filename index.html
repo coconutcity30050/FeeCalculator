@@ -211,7 +211,7 @@
         </div>
 
         <div class="section">
-            <h2>8) 社區總管理費總計（不含電梯分攤）</h2>            
+            <h2>8) 社區總管理費（不含電梯分攤）</h2>            
             <h3>公用總電費＋(每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費＋社區網路總費用</h3>
             <div>
                 <label for="newFeePerPing">每坪收費:</label>
@@ -247,8 +247,26 @@
                 <label for "oldTotalManagementFeeResult">舊制社區總管理費 =</label>
                 <span id="oldTotalManagementFeeResult" class="result">0</span> 元 <br>
                 <label for "reducedTotalManagementFeeResult>社區總管理費減徵 =</label>
-                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元 <br>          
-            </div>            
+                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元 <br>                
+            </div>   
+        <div class="section">
+            <h2>9) 社區每期結餘估算</h2>
+            <h3> (社區總管理費 - 社區總支出 - 社區總管理費減徵)</h3>            
+            <div>
+                <label for "newTotalManagementFeeResult">社區總管理費 ：</label>
+                <span id="newTotalManagementFeeResult" class="result">0</span> 元 <br>                
+            </div>
+            <div>
+                <label>社區總支出：3244540 元</label><br>
+            </div>
+            <div>
+                <label for "reducedTotalManagementFeeResult>社區總管理費減徵 =</label>
+                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元 <br>
+            </div>
+            <div>            
+                <label for "communityFundResult>社區每期結餘 =</label>
+                <span id="communityFundResult" class="result">0</span> 元
+            </div>
         </div>
     </div>
     <script>
@@ -317,6 +335,11 @@
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
             const reducedTotalManagementFee = oldTotalManagementFee - newTotalManagementFee;
             document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2); 
+
+            // 9) 社區每期結餘估算
+            const communitySpending = 3244540;
+            const communityFund = newTotalManagementFee - communitySpending - reducedTotalManagementFee;
+            document.getElementById('communityFundResult').innerText = communityFund.toFixed(2);
         }
 
         // Add event listeners to all input fields to recalculate on change
