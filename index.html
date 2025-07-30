@@ -294,9 +294,10 @@
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
+            const basicFee 0;
             if (basicSecurityDiscount.checked) {
-                basicFee = 0;
-            } else { 
+                basicFee =0;
+            } else {
                 basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
             }
            
