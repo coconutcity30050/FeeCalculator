@@ -312,7 +312,7 @@
             // 8) 社區總管理費 (每期)
             const totalResidentialPing = 11077.55;
             const totalParkingPing = 3825;
-            const totalBasicFee = (securityFee + cleaningStaffFee) * basicPercentage *6;
+            const totalBasicFee = basicFee * totalHouseholds *6;
             const totalMotorcycleCleaningFee = parseFloat(document.getElementById('totalMotorcycleCleaningFee').value) || 0;
             const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;
             const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0; 
