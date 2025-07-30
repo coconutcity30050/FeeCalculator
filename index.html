@@ -239,8 +239,8 @@
                 <span id="totalHouseholdsText" class="result">0</span> 戶
             </div>
             <div>
-                <label>每月總基本費： </label>
-                <span id="monthlyTotalBasicFeeText" class="result">0</span> 元
+                <label>總基本費： </label>
+                <span id="totalBasicFeeText" class="result">0</span> 元 = (每月物業保全費用＋每月清潔費用) *25% *6
             </div>
             <div>
                 <label for="totalMotorcycleCleaningFee">總機車格清潔費： </label>
@@ -312,20 +312,19 @@
             // 8) 社區總管理費 (每期)
             const totalResidentialPing = 11077.55;
             const totalParkingPing = 3825;
-            const monthlyTotalBasicFee = basicFee * totalHouseholds;
+            const totalBasicFee = (securityFee + cleaningStaffFee) * basicPercentage *6;
             const totalMotorcycleCleaningFee = parseFloat(document.getElementById('totalMotorcycleCleaningFee').value) || 0;
             const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;
-            const monthlyTotalElevatorFee = parseFloat(document.getElementById('monthlyTotalElevatorFee').value) || 0;
             const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0; 
             document.getElementById('newFeePerPingText').innerText = newFeePerPing;
             document.getElementById('oldFeePerPingText').innerText = oldFeePerPing;             
             document.getElementById('totalResidentialPingText').innerText = totalResidentialPing;
             document.getElementById('totalParkingPingText').innerText = totalParkingPing;
             document.getElementById('totalHouseholdsText').innerText = totalHouseholds;     
-            document.getElementById('monthlyTotalBasicFeeText').innerText = monthlyTotalBasicFee;    
+            document.getElementById('totalBasicFeeText').innerText = totalBasicFee;    
             
-            // 新制總管理費＝公用總電費＋（新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋每月總基本費*6＋總社區網路費用＋機車格總清潔費
-            const newTotalManagementFee = totalElectricityFee + (newFeePerPing*totalResidentialPing + (totalParkingPing /10)*monthlyParkingCleaningRate)*6 + monthlyTotalBasicFee*6 + totalInternetFee + totalMotorcycleCleaningFee;   
+            // 新制總管理費＝公用總電費＋（新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋總社區網路費用＋機車格總清潔費
+            const newTotalManagementFee = totalElectricityFee + (newFeePerPing*totalResidentialPing + (totalParkingPing /10)*monthlyParkingCleaningRate)*6 + totalBasicFee + totalInternetFee + totalMotorcycleCleaningFee;   
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
             
             // 舊制總管理費 ＝ 公用總電費＋（每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋總社區網路費用＋機車格總清潔費
