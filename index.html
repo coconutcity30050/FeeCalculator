@@ -313,7 +313,7 @@
             const oldFeeDiscount = 86184; // 舊制之委員減免 (每坪45元)
             const oldTotalManagementFee = totalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleCleaningFee +totalInternetFee -oldFeeDiscount;
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
-            const reducedTotalManagementFee = newTotalManagementFee - oldTotalManagementFee;
+            const reducedTotalManagementFee = oldTotalManagementFee - newTotalManagementFee;
             document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2); 
         }
 
