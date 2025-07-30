@@ -218,14 +218,10 @@
                 <span id="newFeePerPingText" class="result">0</span> 元
             </div>
             <div>
-                <h4>社區住家總坪數: 11077.55 坪</h4>
-            </div>
-            <div>
-                <h4>社區車位總坪數:  3825 坪</h4>
-            </div>
-            <div>
+                <h4>社區住家總坪數: 11077.55 坪</h4><br>
+                <h4>社區車位總坪數:  3825 坪</h4><br>
                 <label>總基本費： </label>
-                <span id="totalBasicFeeText" class="result">0</span> 元 = (每月物業保全費用＋每月清潔費用) *25% *6
+                <span id="totalBasicFeeText" class="result">0</span> 元 = (物業保全＋清潔) *25% <br>
             </div>
             <div>
                 <label for="totalMotorcycleCleaningFee">總機車格清潔費： </label>
@@ -244,12 +240,12 @@
                 <input type="number" id="newFeeDiscount" value="74904" step="1"> 元                
             </div>          
             <div>
-                <label>新制社區總管理費 =</label>
-                <span id="newTotalManagementFeeResult" class="result">0</span> 元 
-                <label>舊制社區總管理費 =</label>
-                <span id="oldTotalManagementFeeResult" class="result">0</span> 元 
-                <label>減徵總管理費 =</label>
-                <span id="reducedManagementFeeResult" class="result">0</span> 元                
+                <label for "newTotalManagementFeeResult">新制社區總管理費 =</label>
+                <span id="newTotalManagementFeeResult" class="result">0</span> 元 <br>            
+                <label for "oldTotalManagementFeeResult">舊制社區總管理費 =</label>
+                <span id="oldTotalManagementFeeResult" class="result">0</span> 元 <br>
+                <label for "reducedTotalManagementFeeResult>減徵總管理費 =</label>
+                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元 <br>          
             </div>            
         </div>
     </div>
@@ -318,7 +314,7 @@
             const oldTotalManagementFee = totalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleCleaningFee +totalInternetFee -oldFeeDiscount;
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
             const reducedTotalManagementFee = newTotalManagementFee - oldTotalManagementFee;
-            document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2); 
+            document.getElementById('').innerText = reducedTotalManagementFee.toFixed(2); 
         }
 
         // Add event listeners to all input fields to recalculate on change
