@@ -290,8 +290,10 @@
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
-            const basicFee = 0;
-            basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;        
+            let basicFee = 0;
+            if (totalHouseholds > 0) {
+                basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
+            }            
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 車位清潔費
