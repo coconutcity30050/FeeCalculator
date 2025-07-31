@@ -301,7 +301,7 @@
             const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
             let basicFee = 0;
             if (storeSecurityDiscount.checked) {
-                basicFee = (managerFee + securityFee*0.5 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
+                basicFee = (managerFee + securityFee*0.2 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
             } else {
                 basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
             }                         
