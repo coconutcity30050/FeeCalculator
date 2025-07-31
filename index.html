@@ -300,8 +300,8 @@
             const totalHouseholds = 320;           
             const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
             let basicFee = 0;
-            if (storeSecurityDiscount.checked) {
-                basicFee = (managerFee + securityFee*0.2 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
+            if (storeSecurityDiscount.checked) { // 商店街基本費保全減半
+                basicFee = (managerFee + securityFee*0.5 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
             } else {
                 basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
             }                         
