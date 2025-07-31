@@ -80,7 +80,7 @@
 <body>
     <div class="container">
         <h1>新竹市椰城社區 管理費計算機</h1>
-
+        
         <p><strong>說明：</strong>因社區管理收支統計表與社區修繕費用估算表說明管理費有調整空間，故擬定新制管理費。</p>
         <p><strong>目的：</strong>調降總管理費至<strong>每年約120萬元</strong>修繕預算，車位按坪收費改回車位清潔費，固定支出按坪收費改為部份按戶分攤。</p>
         <p><strong>備註：</strong>管理收支統計表與社區修繕費用估算表，請參閱 <a href="https://coconutcity30050.my.canva.site/" target="_blank">社區管理收支說明簡報！</a></p>
@@ -298,12 +298,14 @@
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
-            const storeSecurityDiscount = document.getElementById('storeSecurityDiscount'); 
-            const isChecked = storeSecurityDiscount.checked;           
+            const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
             let basicFee = 0;
-            //if (totalHouseholds > 0) {
+            if (storeSecurityDiscount.checked) {
+                basicFee = (managerFee + securityFee/2 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
+            } else {
                 basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
-            //}            
+            }
+           
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 車位清潔費
