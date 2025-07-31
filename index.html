@@ -104,6 +104,10 @@
                 <label for="motorcycleCleaningFee">機車格清潔費:</label>
                 <input type="number" id="motorcycleCleaningFee" value="0" step="120"> 元（每期120）
             </div>
+            <div>
+                <label for="storeSecurityDiscount">商店街基本費保全減半:</label>
+                <input type="checkbox" id="storeSecurityDiscount" value="Yes">
+            </div>            
         </div>
 
         <div class="section">
@@ -289,6 +293,7 @@
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
+            const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
             let basicFee = 0;
             if (totalHouseholds > 0) {
                 basicFee = (securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
