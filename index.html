@@ -106,7 +106,7 @@
             </div>
             <div>
                 <label for="storeSecurityDiscount">商店街基本費保全減半:</label>
-                <input type="checkbox" id="storeSecurityDiscount" value="" onclick="recalculateBasicFee()"> 
+                <input type="checkbox" id="storeSecurityDiscount" value="" onclick="calculateFees()"> 
             </div>            
         </div>
 
@@ -298,8 +298,13 @@
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;           
+            const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
             let basicFee = 0;
-            basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;           
+            if (storeSecurityDiscount.checked) {
+                basicFee = (managerFee + securityFee/2 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
+            } else {
+                basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
+            }                         
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 車位清潔費
@@ -358,22 +363,6 @@
             document.getElementById('communityFundResult').innerText = communityFund.toFixed(2);
             document.getElementById('communityAnnualFundResult').innerText = (communityFund*2).toFixed(2);            
         }
-        function recalculateBasicFee() {
-            // 重算基本費
-            const managerFee = parseFloat(document.getElementById('managerFee').value) || 0;            
-            const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
-            const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
-            const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
-            const totalHouseholds = 320;
-            const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
-            let basicFee = 0;
-            if (storeSecurityDiscount.checked) {
-                basicFee = (managerFee + securityFee/2 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
-            } else {
-                basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
-            }           
-            document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
-        }
         
         // Add event listeners to all input fields to recalculate on change
         document.addEventListener('DOMContentLoaded', () => {
@@ -382,8 +371,7 @@
                 input.addEventListener('input', calculateFees);
             });
             // Initial calculation on page load
-            calculateFees();
-            recalculateBasicFee();            
+            calculateFees();          
         });
     </script>
 </body>
