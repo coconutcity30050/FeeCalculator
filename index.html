@@ -103,11 +103,7 @@
             <div>
                 <label for="motorcycleCleaningFee">機車格清潔費:</label>
                 <input type="number" id="motorcycleCleaningFee" value="0" step="120"> 元（每期120）
-            </div>
-            <div>
-                <label for="storeSecurityDiscount">商店街基本費保全減半:</label>
-                <input type="checkbox" id="storeSecurityDiscount" value="" onclick="calculateFees()"> 
-            </div>            
+            </div>           
         </div>
 
         <div class="section">
@@ -211,7 +207,11 @@
 
         <div class="section">
             <h2>7) 舊制繳費金額</h2>
-            <h3>((大公電＋小公電＋每坪收費)*住家坪數＋每坪收費*車位坪數＋機車格清潔費)*6＋網路費用＋電梯分攤</h3>            
+            <h3>((大公電＋小公電＋每坪收費)*住家坪數＋每坪收費*車位坪數＋機車格清潔費)*6＋網路費用＋電梯分攤</h3>  
+            <div>
+                <label for="oldFeePerPing">舊制每坪收費:</label>
+                <input type="number" id="oldFeePerPing" value="45" step="1"> 元
+            </div>            
             <div>
                 <label>舊制繳費金額 = </label>
                 <span id="oldManagementFeeResult" class="result">0</span> 元
@@ -222,7 +222,7 @@
             <h2>8) 社區總管理費（不含電梯分攤）</h2>            
             <h3>公用總電費＋(每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費＋網路總費用</h3>
             <div>
-                <label for="newFeePerPing">每坪收費:</label>
+                <label for="newFeePerPing">新制每坪收費:</label>
                 <span id="newFeePerPingText" class="result">0</span> 元<br>
             </div>
             <div>
@@ -312,14 +312,9 @@
             const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
             const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
-            const totalHouseholds = 320;           
-            const storeSecurityDiscount = document.getElementById('storeSecurityDiscount');            
+            const totalHouseholds = 320;                   
             let basicFee = 0;
-            if (storeSecurityDiscount.checked) { // 商店街基本費保全減半
-                basicFee = (managerFee + securityFee*0.5 + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                
-            } else {
-                basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
-            }                         
+            basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                     
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 車位清潔費
@@ -342,7 +337,7 @@
             document.getElementById('newManagementFeeResult').innerText = newManagementFee.toFixed(2);
 
             // 7) 舊制繳費金額
-            const oldFeePerPing = 45;
+            const oldFeePerPing = parseFloat(document.getElementById('oldFeePerPing').value) || 0;
             // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*車位坪數)*6＋機車格清潔費*6＋網路費用＋電梯分攤
             const oldManagementFee = ((majorPublicElectricity + minorPublicElectricity + oldFeePerPing)*residentialPing + parkingPing*oldFeePerPing)*6 + motorcycleCleaningFee + internetFee  + elevatorFee*6;
             document.getElementById('oldManagementFeeResult').innerText = oldManagementFee.toFixed(2);
