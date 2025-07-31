@@ -299,16 +299,11 @@
             const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;
             const storeSecurityDiscount = document.getElementById('storeSecurityDiscount'); 
-            const isChecked = storeSecurityDiscount.checked;
-            if (isChecked) {               
-               console.log("securityFee", (securityFee *0.25 *6 *0.5) );
-            } else {
-               console.log("Checkbox is not checked.");
-            }            
+            const isChecked = storeSecurityDiscount.checked;           
             let basicFee = 0;
-            if (totalHouseholds > 0) {
+            //if (totalHouseholds > 0) {
                 basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;
-            }            
+            //}            
             document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
 
             // 3) 車位清潔費
