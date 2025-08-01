@@ -245,26 +245,6 @@
                 <span id="reducedTotalManagementFeeResult" class="result">0</span> 元            
             </div>
         </div>
-        <div class="section">
-            <h2>9) 社區每期結餘估算</h2>
-            <h3> 社區每期結餘 = 社區總管理費 - 社區總支出</h3>            
-            <div>
-                <label for "newTotalManagementFeeText">社區總管理費 ：</label>
-                <span id="newTotalManagementFeeText" class="result">0</span> 元               
-            </div>
-            <div>
-                <label>社區總支出：</label>
-                <input type="number" id="communitySpending" value="3244540" step="1"> 元
-            </div>
-            <div>            
-                <label for "communityFundResult>社區每期結餘 =</label>
-                <span id="communityFundResult" class="result">0</span> 元
-            </div>
-            <div>            
-                <label for "communityAnnualFundResult>社區每年結餘 =</label>
-                <span id="communityAnnualFundResult" class="result">0</span> 元
-            </div>            
-        </div>
     <script>
         function calculateFees() {
             // 1) 住戶基本資料
@@ -322,15 +302,7 @@
             const oldTotalManagementFee = totalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleCleaningFee +totalInternetFee -oldFeeDiscount;
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
             const reducedTotalManagementFee = oldTotalManagementFee - newTotalManagementFee;
-            document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2); 
-
-            // 9) 社區每期結餘估算
-            const communitySpending = parseFloat(document.getElementById('communitySpending').value) || 0;
-            const communityFund = newTotalManagementFee - communitySpending;
-            // 社區每期結餘 = 社區總管理費 - 社區總支出
-            document.getElementById('newTotalManagementFeeText').innerText = newTotalManagementFee.toFixed(2);
-            document.getElementById('communityFundResult').innerText = communityFund.toFixed(2);
-            document.getElementById('communityAnnualFundResult').innerText = (communityFund*2).toFixed(2);            
+            document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2);           
         }
         
         // Add event listeners to all input fields to recalculate on change
