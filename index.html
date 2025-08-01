@@ -108,29 +108,12 @@
 
         <div class="section">
             <h2>2) 基本費</h2>
-            <h3>(物業費用＋保全費用＋清潔費用) *25% *6</h3>
-            <div>
-                <label for="managerFee">物業費用:</label>
-                <input type="number" id="managerFee" value="72450" step="1"> 元
-            </div>            
-            <div>
-                <label for="securityFee">保全費用:</label>
-                <input type="number" id="securityFee" value="142550" step="1"> 元
-            </div>
-            <div>
-                <label for="cleaningStaffFee">清潔人員費用:</label>
-                <input type="number" id="cleaningStaffFee" value="84000" step="1000"> 元
-            </div>
-            <div>
-                <label for="basicPercentage">基本百分比:</label>
-                <input type="number" id="basicPercentage" value="0" step="0.01"> %
-            </div>
-            <div>
-                <label>社區總戶數: 320 戶</label>
-            </div>
+            <h3> 華清：固定支出之全部40萬元 *100% /225戶 *6</h3>            
+            <h3> 椰城：固定支出之部費29.9萬元 *25% /320戶 *6</h3>
+            <h3>       (物業費用＋保全費用＋清潔費用) </h3>
             <div>
                 <label>基本費 =</label>
-                <span id="basicFeeResult" class="result">0</span> 元 
+                <input type="number" id="basicFee" value="0" step="1"> 元 (25% = 1401.56)
             </div>
         </div>
 
@@ -292,14 +275,8 @@
             const motorcycleCleaningFee = parseFloat(document.getElementById('motorcycleCleaningFee').value) || 0;
 
             // 2) 基本費
-            const managerFee = parseFloat(document.getElementById('managerFee').value) || 0;            
-            const securityFee = parseFloat(document.getElementById('securityFee').value) || 0;
-            const cleaningStaffFee = parseFloat(document.getElementById('cleaningStaffFee').value) || 0;
-            const basicPercentage = parseFloat(document.getElementById('basicPercentage').value) /100 || 0;
             const totalHouseholds = 320;                   
-            let basicFee = 0;
-            basicFee = (managerFee + securityFee + cleaningStaffFee) * basicPercentage *6 / totalHouseholds;                     
-            document.getElementById('basicFeeResult').innerText = basicFee.toFixed(2);
+            const basicFee = parseFloat(document.getElementById('basicFee').value) || 0; 
 
             // 3) 車位清潔費
             const parkingCleaningRate = parseFloat(document.getElementById('parkingCleaningRate').value) || 0;
@@ -329,7 +306,7 @@
             // 8) 社區管理費總收 (不含電梯分攤)
             const totalResidentialPing = 11077.55;
             const totalParkingPing = 3825;
-            const totalBasicFee = basicFee * totalHouseholds;
+            const totalBasicFee = basicFee * totalHouseholds *6;
             const totalMotorcycleCleaningFee = parseFloat(document.getElementById('totalMotorcycleCleaningFee').value) || 0;
             const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;            
             const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;  
