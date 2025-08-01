@@ -311,7 +311,7 @@
             const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;            
             const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;  
             document.getElementById('newFeePerPingText').innerText = newFeePerPing;               
-            document.getElementById('totalBasicFeeText').innerText = totalBasicFee;
+            document.getElementById('totalBasicFeeText').innerText = totalBasicFee.toFixed(2);;
             
             // 新制管理費總收＝公用總電費＋(新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費＋網路費用-委員減免
             const newFeeDiscount = parseFloat(document.getElementById('newFeeDiscount').value) || 0; // 新制之委員減免        
