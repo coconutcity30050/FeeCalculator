@@ -242,17 +242,13 @@
                 <input type="number" id="totalInternetFee" value="150000" step="200"> 元 (22000 *6 =132000)
             </div> 
             <div>
-                <label for="totalMajorElectricityFee">大公總電費（半年）： </label>
-                <input type="number" id="totalMajorElectricityFee" value="373465" step="1"> 元 (114上半年=373465, 113下半年=411346)
-            </div>              
+                <label for="newTotalElectricityFee">新制公用總電費（半年）： </label>
+                <input type="number" id="newTotalElectricityFee" value="556905" step="1"> 元 (114上半年小公=183440,113下半年小公=225911)
+            </div> 
             <div>
-                <label for="totalMinorElectricityFee">小用總電費（半年）： </label>
-                <input type="number" id="totalMinorElectricityFee" value="183440" step="1"> 元 (114上半年=183440, 113下半年=225911)           
-            </div>
-            <div>
-                <label for="totalElectricityFee">公用總電費（半年）： </label>
-                <span id="totalElectricityFeeResult" class="result">0</span> 元 (114上半年=556905, 113下半年=637257)           
-            </div>            
+                <label for="oldTotalElectricityFee">舊制公用總電費（半年）： </label>
+                <input type="number" id="oldTotalElectricityFee" value="556905" step="1"> 元 (114上半年=556905, 113下半年=637257)
+            </div>                         
             <div>
                 <label for="newFeeDiscount">新制委員減免： </label>
                 <input type="number" id="newFeeDiscount" value="74904" step="1"> 元                
@@ -338,24 +334,21 @@
             const totalResidentialPing = 11077.55;
             const totalParkingPing = 3825;
             const totalBasicFee = basicFee * totalHouseholds;
-            const totalMajorElectricityFee = parseFloat(document.getElementById('totalMajorElectricityFee').value) || 0; 
-            const totalMinorElectricityFee = parseFloat(document.getElementById('totalMinorElectricityFee').value) || 0;             
-            const totalElectricityFee = totalMajorElectricityFee + totalMinorElectricityFee;
-            document.getElementById('totalElectricityFeeResult').innerText = totalElectricityFee;             
-            document.getElementById('newFeePerPingText').innerText = newFeePerPing;               
-            document.getElementById('totalBasicFeeText').innerText = totalBasicFee;    
-
             const totalMotorcycleCleaningFee = parseFloat(document.getElementById('totalMotorcycleCleaningFee').value) || 0;
-            const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;
+            const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;            
+            const newTotalElectricityFee = parseFloat(document.getElementById('newTotalElectricityFee').value) || 0; 
+            const oldTotalElectricityFee = parseFloat(document.getElementById('oldTotalElectricityFee').value) || 0; 
+            document.getElementById('newFeePerPingText').innerText = newFeePerPing;               
+            document.getElementById('totalBasicFeeText').innerText = totalBasicFee;
             
             // 新制管理費總收＝公用總電費＋(新制每坪收費*住家總坪數＋車位總坪數/10*300)*6＋總基本費＋機車格總清潔費＋網路費用-委員減免
             const newFeeDiscount = parseFloat(document.getElementById('newFeeDiscount').value) || 0; // 新制之委員減免        
-            const newTotalManagementFee = totalElectricityFee +(newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 +totalBasicFee +totalMotorcycleCleaningFee +totalInternetFee -newFeeDiscount;            
+            const newTotalManagementFee = newTotalElectricityFee +(newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 +totalBasicFee +totalMotorcycleCleaningFee +totalInternetFee -newFeeDiscount;            
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
             
             // 舊制管理費總收＝公用總電費＋(舊制每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋機車格總清潔費＋網路費用-委員減免
             const oldFeeDiscount = 86184; // 舊制之委員減免 (每坪45元)
-            const oldTotalManagementFee = totalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleCleaningFee +totalInternetFee -oldFeeDiscount;
+            const oldTotalManagementFee = oldTotalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleCleaningFee +totalInternetFee -oldFeeDiscount;
             document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
             const reducedTotalManagementFee = oldTotalManagementFee - newTotalManagementFee;
             document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2); 
