@@ -260,7 +260,7 @@
             // 6) 舊制繳費金額
             const oldFeePerPing = parseFloat(document.getElementById('oldFeePerPing').value) || 0;
             // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*車位坪數)*6＋機車格清潔費*6＋網路費用＋電梯分攤
-            const oldManagementFee = ((majorPublicElectricity + minorPublicElectricity + oldFeePerPing)*residentialPing + parkingPing*oldFeePerPing)*6 + motorcycleRentalFee*6 + internetFee*6  + elevatorFee*6;
+            const oldManagementFee = ((majorPublicElectricity + minorPublicElectricity + oldFeePerPing)*residentialPing + carParkingPing*oldFeePerPing)*6 + motorcycleRentalFee*6 + internetFee*6  + elevatorFee*6;
             document.getElementById('oldManagementFeeResult').innerText = oldManagementFee.toFixed(2);
 
             // 7) 社區管理費總收 (不含電梯分攤)
@@ -274,7 +274,7 @@
             
             // 新制管理費總收＝公用總電費＋(新制每戶坪收費*住屋總坪數＋汽車位總坪數/10*300)*6＋機車格總租用費＋網路使用費-委員減免
             const newFeeDiscount = parseFloat(document.getElementById('newFeeDiscount').value) || 0; // 新制之委員減免        
-            const newTotalManagementFee = totalElectricityFee +(newFeePerPing*totalResidentialPing + (totalParkingPing /10)*parkingCleaningRate)*6 +totalMotorcycleRentallFee +totalInternetFee -newFeeDiscount;            
+            const newTotalManagementFee = totalElectricityFee +(newFeePerPing*totalResidentialPing + (totalParkingPing /10)*carParkingCleaningRate)*6 +totalMotorcycleRentallFee +totalInternetFee -newFeeDiscount;            
             document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
             
             // 舊制管理費總收＝公用總電費＋(舊制每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋機車格總清潔費＋網路費用-委員減免
