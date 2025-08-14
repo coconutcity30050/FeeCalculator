@@ -240,7 +240,7 @@
 
             // 2) 車位清潔費
             const carParkingPing = parseFloat(document.getElementById('carParkingPing').value) || 0;            
-            const carParkingCleaningRate = parseFloat(document.getElementById('parkingCleaningRate').value) || 0;
+            const carParkingCleaningRate = parseFloat(document.getElementById('carParkingCleaningRate').value) || 0;
             const carParkingCleaningFee = (carParkingPing / 10) * carParkingCleaningRate;
             document.getElementById('carParkingCleaningFeeResult').innerText = carParkingCleaningFee.toFixed(2);
 
