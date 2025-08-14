@@ -189,48 +189,6 @@
                 <span id="oldManagementFeeResult" class="result">0</span> 元
             </div>
         </div>
-
-        <div class="section">
-            <h2>7) 社區總管理費（不含電梯分攤）</h2>            
-            <h3>公用總電費＋(每坪收費*住屋總坪數＋汽車位總坪數/10*300)*6＋機車格總租用費＋網路總費用</h3>
-            <div>
-                <label for="newFeePerPing">新制每坪收費:</label>
-                <span id="newFeePerPingText" class="result">0</span> 元<br>
-            </div>
-            <div>
-                <label>住屋總坪數: 11077.55 坪</label><br>
-                <label>汽車位總坪數: 3825 坪</label><br>
-            </div>
-            <div>
-                <label for="totalMotorcycleRentalFee">機車格總租用費： </label>
-                <input type="number" id="totalMotorcycleRentalFee" value="32760" step="120"> 元 (272 *20*6 =32640)
-            </div>            
-            <div>
-                <label for="totalInternetFee">社區網路總費用： </label>
-                <input type="number" id="totalInternetFee" value="150000" step="200"> 元 (22000 *6 =132000)
-            </div> 
-            <div>
-                <label for="totalElectricityFee">公用總電費（半年）： </label>
-                <input type="number" id="totalElectricityFee" value="556905" step="1"> 元 
-            </div>                        
-            <div>
-                <label for="newFeeDiscount">新制委員減免： </label>
-                <input type="number" id="newFeeDiscount" value="72354" step="1"> 元
-            </div>
-            
-            <div>
-                <label for "newTotalManagementFeeResult">新制社區總管理費 =</label>
-                <span id="newTotalManagementFeeResult" class="result">0</span> 元
-            </div>
-            <div>
-                <label for "oldTotalManagementFeeResult">舊制社區總管理費 =</label>
-                <span id="oldTotalManagementFeeResult" class="result">0</span> 元 
-            </div>
-            <div>
-                <label for "reducedTotalManagementFeeResult>社區總管理費減徵 =</label>
-                <span id="reducedTotalManagementFeeResult" class="result">0</span> 元            
-            </div>
-        </div>
     <script>
         function calculateFees() {
             // 1) 住戶基本資料
@@ -262,26 +220,7 @@
             // Formula: (大公電費＋小公電費＋每坪收費)*住家坪數*6＋車位坪數*每坪收費坪＋機車格租用費＋網路使用費)*6＋電梯分攤
             const oldManagementFee = ((majorPublicElectricity + minorPublicElectricity + oldFeePerPing)*residentialPing + carParkingPing*oldFeePerPing)*6 + motorcycleRentalFee*6 + internetFee*6  + elevatorFee*6;
             document.getElementById('oldManagementFeeResult').innerText = oldManagementFee.toFixed(2);
-
-            // 7) 社區管理費總收 (不含電梯分攤)
-            const totalResidentialPing = 11077.55;
-            const totalParkingPing = 3825;
-            const totalMotorcycleRentalFee = parseFloat(document.getElementById('totalMotorcycleRentalFee').value) || 0;
-            const totalInternetFee = parseFloat(document.getElementById('totalInternetFee').value) || 0;            
-            const totalElectricityFee = parseFloat(document.getElementById('totalElectricityFee').value) || 0;  
-            document.getElementById('newFeePerPingText').innerText = newFeePerPing;               
-            
-            // 新制管理費總收＝公用總電費＋(新制每戶坪收費*住屋總坪數＋汽車位總坪數/10*300)*6＋機車格總租用費＋網路使用費-委員減免
-            const newFeeDiscount = parseFloat(document.getElementById('newFeeDiscount').value) || 0; // 新制之委員減免        
-            const newTotalManagementFee = totalElectricityFee +(newFeePerPing*totalResidentialPing + (totalParkingPing /10)*carParkingCleaningRate)*6 +totalMotorcycleRentalFee +totalInternetFee -newFeeDiscount;            
-            document.getElementById('newTotalManagementFeeResult').innerText = newTotalManagementFee.toFixed(2); 
-            
-            // 舊制管理費總收＝公用總電費＋(舊制每坪收費*住家總坪數＋每坪收費*車位總坪數)*6＋機車格總清潔費＋網路費用-委員減免
-            const oldFeeDiscount = 86184; // 舊制之委員減免 (每坪45元)
-            const oldTotalManagementFee = totalElectricityFee +(oldFeePerPing*totalResidentialPing + oldFeePerPing*totalParkingPing)*6 +totalMotorcycleRentalFee +totalInternetFee -oldFeeDiscount;
-            document.getElementById('oldTotalManagementFeeResult').innerText = oldTotalManagementFee.toFixed(2); 
-            const reducedTotalManagementFee = oldTotalManagementFee - newTotalManagementFee;
-            document.getElementById('reducedTotalManagementFeeResult').innerText = reducedTotalManagementFee.toFixed(2);           
+    
         }
         
         // Add event listeners to all input fields to recalculate on change
